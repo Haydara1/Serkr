@@ -10,6 +10,8 @@ onready var save_state = $Color_rect_Save_state
 var player_name = "Gatsu" setget set_player_name, get_player_name
 var existing_data = false setget ,get_existing_data
 
+var Started = false
+
 signal save_game
 signal load_game
 
@@ -18,10 +20,11 @@ func _ready():
 	_bin = self.connect("load_game", save_state, "load_game")
 
 func _input(_event):
-	main_menu_scene()
-	set_process_input(false)
-#	if event.is_action_pressed("ui_cancel"):
-#		Settings()
+	if _event is InputEventKey and !Started:
+		main_menu_scene()
+		Started = true
+	if _event.is_action_pressed("ui_cancel"):
+		Settings()
 
 func set_player_name(pl_nm):
 	player_name = pl_nm
@@ -36,7 +39,7 @@ func New_game():
 	new_scene(get_player_name_scene)
 
 func Settings():
-	add_child(Settings_CL)
+	add_child(Settings_CL.instance())
 
 func Continue():
 	emit_signal("load_game")

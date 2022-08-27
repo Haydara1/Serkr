@@ -73,12 +73,12 @@ anims/Fade_in = SubResource( 1 )
 anims/RESET = SubResource( 2 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 332.0
+margin_left = 308.0
 margin_top = 234.0
-margin_right = 711.0
+margin_right = 775.0
 margin_bottom = 337.0
 custom_fonts/font = SubResource( 3 )
-text = "Press any key to start.
+text = "Press any key to start an unforgettable adventure.
 "
 align = 1
 valign = 1

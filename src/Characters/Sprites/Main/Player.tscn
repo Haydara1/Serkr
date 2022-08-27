@@ -406,6 +406,7 @@ stream = ExtResource( 4 )
 stream = ExtResource( 3 )
 
 [node name="Empty_hearts" type="TextureRect" parent="."]
+light_mask = 513
 margin_left = -320.0
 margin_top = 420.0
 margin_right = -260.0
@@ -419,6 +420,7 @@ __meta__ = {
 }
 
 [node name="Full_hearts" type="TextureRect" parent="."]
+light_mask = 513
 margin_left = -320.0
 margin_top = 409.999
 margin_right = -260.0
