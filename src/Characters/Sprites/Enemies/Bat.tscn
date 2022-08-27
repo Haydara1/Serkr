@@ -1,0 +1,134 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Imports/Characters/Enemies/Bat.png" type="Texture" id=1]
+[ext_resource path="res://Characters/Scripts/Enemies/Bat.gd" type="Script" id=2]
+[ext_resource path="res://Imports/Effects/EnemyDeathEffect.png" type="Texture" id=3]
+[ext_resource path="res://Imports/Other/Music/EnemyDie.wav" type="AudioStream" id=5]
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 224, 336 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 224, 0, 224, 336 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 448, 0, 224, 336 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 672, 0, 224, 336 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 896, 0, 224, 336 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
+"loop": true,
+"name": "Fly",
+"speed": 12.0
+} ]
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 145.086
+
+[sub_resource type="Animation" id=8]
+resource_name = "Death_effect"
+length = 1.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="CircleShape2D" id=10]
+radius = 644.38
+
+[node name="Bat" type="KinematicBody2D" groups=["enemies"]]
+scale = Vector2( 0.2, 0.2 )
+script = ExtResource( 2 )
+
+[node name="Main_sprite" type="AnimatedSprite" parent="."]
+pause_mode = 2
+position = Vector2( 0, -1 )
+frames = SubResource( 6 )
+animation = "Fly"
+frame = 3
+playing = true
+
+[node name="Collision_shape" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0, -45 )
+shape = SubResource( 7 )
+
+[node name="Death_effect" type="Sprite" parent="."]
+visible = false
+position = Vector2( -5, -40 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 3 )
+hframes = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Death_effect"]
+anims/Death_effect = SubResource( 8 )
+anims/RESET = SubResource( 9 )
+
+[node name="Died" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+
+[node name="Check_player_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Check_player_area"]
+visible = false
+shape = SubResource( 10 )
+
+[node name="Movement_timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="body_entered" from="Check_player_area" to="." method="_on_Check_player_area_body_entered"]
+[connection signal="timeout" from="Movement_timer" to="." method="_on_Movement_timer_timeout"]

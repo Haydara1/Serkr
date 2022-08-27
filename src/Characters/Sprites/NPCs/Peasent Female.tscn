@@ -1,0 +1,319 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://Imports/Characters/Non-enemies/Peasant Female Variants/Peasent Female Final.png" type="Texture" id=1]
+[ext_resource path="res://Characters/Scripts/NPCs/Peasent Female.gd" type="Script" id=2]
+
+[sub_resource type="CapsuleShape2D" id=29]
+radius = 30.0
+height = 96.0
+
+[sub_resource type="Animation" id=6]
+resource_name = "Idle_downwards"
+length = 0.05
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 10 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Idle_left"
+length = 0.05
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 21 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Idle_upwards"
+length = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Stand_downwards"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 11, 12, 10 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Stand_left"
+length = 0.15
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 21, 22 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "Stand_move_left"
+length = 0.35
+loop = true
+
+[sub_resource type="Animation" id=11]
+resource_name = "Stand_right"
+length = 0.05
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 37 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Stand_upwards"
+length = 0.35
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Walk_downwards"
+length = 0.75
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 13, 14, 15, 16, 17, 18, 19, 20 ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "Walk_left"
+length = 0.55
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 28, 29, 30, 31, 32, 33 ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "Walk_right"
+length = 0.55
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 41, 42, 43, 44, 45 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Walk_upwards"
+length = 0.55
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7, 8, 9 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "Idle_left"
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "Stand_downwards"
+
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "Stand_right"
+
+[sub_resource type="AnimationNodeAnimation" id=21]
+animation = "Idle_upwards"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=18]
+blend_point_0/node = SubResource( 14 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 15 )
+blend_point_1/pos = Vector2( 0, 1 )
+blend_point_2/node = SubResource( 16 )
+blend_point_2/pos = Vector2( 1, 0 )
+blend_point_3/node = SubResource( 21 )
+blend_point_3/pos = Vector2( 0, -1 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=25]
+animation = "Walk_left"
+
+[sub_resource type="AnimationNodeAnimation" id=26]
+animation = "Walk_right"
+
+[sub_resource type="AnimationNodeAnimation" id=27]
+animation = "Walk_downwards"
+
+[sub_resource type="AnimationNodeAnimation" id=28]
+animation = "Walk_upwards"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=22]
+blend_point_0/node = SubResource( 25 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 26 )
+blend_point_1/pos = Vector2( 1, 0 )
+blend_point_2/node = SubResource( 27 )
+blend_point_2/pos = Vector2( 0, 1 )
+blend_point_3/node = SubResource( 28 )
+blend_point_3/pos = Vector2( 0, -1 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+
+[sub_resource type="AnimationNodeStateMachine" id=19]
+states/Stand/node = SubResource( 18 )
+states/Stand/position = Vector2( 448, 136 )
+states/Walk/node = SubResource( 22 )
+states/Walk/position = Vector2( 611, 136 )
+transitions = [ "Stand", "Walk", SubResource( 23 ), "Walk", "Stand", SubResource( 24 ) ]
+start_node = "Stand"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=20]
+
+[node name="Peasent Female" type="KinematicBody2D" groups=["NPC"]]
+scale = Vector2( 0.09, 0.09 )
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -1 )
+texture = ExtResource( 1 )
+hframes = 8
+vframes = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( -5, 132 )
+rotation = 1.5708
+shape = SubResource( 29 )
+
+[node name="Female_walk_player" type="AnimationPlayer" parent="."]
+anims/Idle_downwards = SubResource( 6 )
+anims/Idle_left = SubResource( 7 )
+anims/Idle_upwards = SubResource( 8 )
+anims/RESET = SubResource( 1 )
+anims/Stand_downwards = SubResource( 2 )
+anims/Stand_left = SubResource( 9 )
+anims/Stand_move_left = SubResource( 10 )
+anims/Stand_right = SubResource( 11 )
+anims/Stand_upwards = SubResource( 3 )
+anims/Walk_downwards = SubResource( 4 )
+anims/Walk_left = SubResource( 12 )
+anims/Walk_right = SubResource( 13 )
+anims/Walk_upwards = SubResource( 5 )
+
+[node name="Female_walk_tree" type="AnimationTree" parent="."]
+tree_root = SubResource( 19 )
+anim_player = NodePath("../Female_walk_player")
+active = true
+parameters/playback = SubResource( 20 )
+parameters/Stand/blend_position = Vector2( -0.0023753, 0.0258621 )
+parameters/Walk/blend_position = Vector2( -0.0704671, 0.396552 )
+
+[node name="Wander_timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="Wander_timer" to="." method="_on_Wander_timer_timeout"]

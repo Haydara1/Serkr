@@ -1,0 +1,220 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Imports/Environment/Houses&Decorations/Wood_plank.png" type="Texture" id=1]
+[ext_resource path="res://Characters/Sprites/Old_man.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Characters/Sprites/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Imports/Environment/Houses&Decorations/Interior.png" type="Texture" id=4]
+[ext_resource path="res://Imports/Environment/Houses&Decorations/Wall.png" type="Texture" id=5]
+[ext_resource path="res://Imports/Environment/Houses&Decorations/Wall_side.png" type="Texture" id=6]
+[ext_resource path="res://Environment/Scripts/House_interior.gd" type="Script" id=7]
+[ext_resource path="res://Environment/Main_Canvas_Layer.tscn" type="PackedScene" id=8]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 33.5, 17 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 0, 0, 384, 0, 384, 416, 0, 416 )
+
+[sub_resource type="TileSet" id=4]
+0/name = "Wall.png 0"
+0/texture = ExtResource( 5 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 672, 384, 384, 416 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 3 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=1]
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 416, 0, 416 )
+
+[sub_resource type="TileSet" id=6]
+0/name = "Wall_side.png 0"
+0/texture = ExtResource( 6 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 192, 352, 64, 416 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 5 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 5 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 156.667, 148.333 )
+
+[sub_resource type="ConvexPolygonShape2D" id=8]
+points = PoolVector2Array( 0, 32, 416, 32, 416, 64, 0, 64 )
+
+[sub_resource type="TileSet" id=9]
+0/name = "Wall_side.png 0"
+0/texture = ExtResource( 6 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 288, 704, 416, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 8 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 8 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 55.5, 35 )
+
+[node name="House_interior" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="Wood_plank" type="Sprite" parent="."]
+position = Vector2( 11, 0 )
+scale = Vector2( 0.197831, 0.2 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( -1200, -464, 5072, 2976 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Library" type="StaticBody2D" parent="YSort"]
+position = Vector2( 729, 81 )
+
+[node name="Sprite" type="Sprite" parent="YSort/Library"]
+position = Vector2( 4, 3 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 4 )
+hframes = 14
+vframes = 6
+frame = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Library"]
+visible = false
+position = Vector2( 2, 45 )
+shape = SubResource( 2 )
+
+[node name="Library2" type="StaticBody2D" parent="YSort"]
+position = Vector2( 659, 81 )
+
+[node name="Sprite" type="Sprite" parent="YSort/Library2"]
+position = Vector2( 4, 3 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 4 )
+hframes = 14
+vframes = 6
+frame = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Library2"]
+visible = false
+position = Vector2( 2, 45 )
+shape = SubResource( 2 )
+
+[node name="Wall" type="TileMap" parent="YSort"]
+scale = Vector2( 0.3, 0.3 )
+tile_set = SubResource( 4 )
+format = 1
+tile_data = PoolIntArray( 2, 0, 0, 8, 0, 0, 14, 0, 0, 20, 0, 0, 26, 0, 0, 32, 0, 0, 38, 0, 0, 44, 0, 0 )
+
+[node name="Player" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 522, 444 )
+
+[node name="players_move_anim_tree" parent="YSort/Player" index="2"]
+parameters/playback = SubResource( 1 )
+
+[node name="Empty_hearts" parent="YSort/Player" index="9"]
+visible = false
+
+[node name="Full_hearts" parent="YSort/Player" index="10"]
+visible = false
+
+[node name="Old_man" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 169, 194 )
+scale = Vector2( 2.5, 2.5 )
+
+[node name="Side_wall" type="TileMap" parent="YSort"]
+scale = Vector2( 0.2, 0.2 )
+tile_set = SubResource( 6 )
+format = 1
+tile_data = PoolIntArray( 79, 0, 0, 65536, 0, 0, 65615, 0, 0, 131072, 0, 0, 131151, 0, 0, 196608, 0, 0, 196687, 0, 0, 262144, 0, 0, 262223, 0, 0, 327680, 0, 0, 327759, 0, 0, 393216, 0, 0, 393295, 0, 0, 458752, 0, 0, 524288, 0, 0, 589824, 0, 0, 589903, 0, 0, 720896, 0, 0, 983119, 0, 0, 1114112, 0, 0, 1310799, 0, 0, 1507328, 0, 0, 1638479, 0, 0, 1900544, 0, 0, 1966159, 0, 0, 2293760, 0, 0, 2359375, 0, 0, 2490368, 0, 0, 2621440, 0, 0, 2621519, 0, 0 )
+
+[node name="Corner" type="StaticBody2D" parent="YSort"]
+position = Vector2( -25, 34.5 )
+scale = Vector2( 0.3, 0.3 )
+
+[node name="Sprite" type="Sprite" parent="YSort/Corner"]
+texture = ExtResource( 5 )
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Corner"]
+visible = false
+position = Vector2( 263.333, 126.667 )
+shape = SubResource( 7 )
+
+[node name="Corner2" type="StaticBody2D" parent="YSort"]
+position = Vector2( 932, 34 )
+scale = Vector2( 0.3, 0.3 )
+
+[node name="Sprite" type="Sprite" parent="YSort/Corner2"]
+position = Vector2( 383.333, 0 )
+texture = ExtResource( 5 )
+flip_h = true
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Corner2"]
+visible = false
+position = Vector2( 260, 138.333 )
+shape = SubResource( 7 )
+
+[node name="Front_wall" type="TileMap" parent="YSort"]
+scale = Vector2( 0.3, 0.3 )
+tile_set = SubResource( 9 )
+format = 1
+tile_data = PoolIntArray( 1966080, 0, 0, 1966086, 0, 0, 1966092, 0, 0, 1966097, 0, 0, 1966098, 0, 0, 1966109, 0, 0, 1966114, 0, 0, 1966119, 0, 0, 1966125, 0, 0, 1966127, 0, 0 )
+
+[node name="Door" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door"]
+position = Vector2( 518.5, 638 )
+shape = SubResource( 10 )
+
+[node name="Main_Canvas_Layer" parent="." instance=ExtResource( 8 )]
+
+[connection signal="area_entered" from="YSort/Old_man/Dialogue_area" to="." method="_on_Dialogue_area_area_entered"]
+[connection signal="body_entered" from="Door" to="." method="_on_Door_body_entered"]
+
+[editable path="YSort/Player"]
+[editable path="YSort/Old_man"]

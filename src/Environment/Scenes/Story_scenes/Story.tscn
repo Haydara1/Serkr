@@ -1,0 +1,80 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Imports/Other/m3x6.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Environment/Scripts/Stories/Story.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 54
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Visibility"
+length = 32.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 3, 5, 6, 7.5, 8, 11, 12, 13, 14, 15, 16, 17.5, 19, 22, 23.5, 29.5, 31.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0559006, 0.0559006, 0.136646, 0.136646, 0.180124, 0.180124, 0.341615, 0.341615, 0.372671, 0.372671, 0.405405, 0.405405, 0.506757, 0.506757, 0.641892, 0.641892, 1.0, 1.0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 31.7, 31.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ "_finished" ],
+"method": "emit_signal"
+}, {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[node name="Story" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 73.0
+margin_top = 49.0
+margin_right = 979.0
+margin_bottom = 322.0
+custom_fonts/font = SubResource( 1 )
+text = "Where Am I?
+Is this a dream?
+Well...guess this is the same dream... No... the nightmare...
+Time to search for it...
+I'm heading to the village, I can gather some info from there..."
+percent_visible = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Label"]
+playback_speed = 3.61
+anims/RESET = SubResource( 2 )
+anims/Visibility = SubResource( 3 )

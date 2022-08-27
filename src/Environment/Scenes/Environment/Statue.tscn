@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Imports/Environment/Structures/TX Props.png" type="Texture" id=1]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 33.0
+height = 52.0
+
+[node name="Statue" type="StaticBody2D"]
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 32, -41 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 1 )
+hframes = 7
+vframes = 5
+frame = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( -5, 48 )
+rotation = 1.5708
+shape = SubResource( 1 )

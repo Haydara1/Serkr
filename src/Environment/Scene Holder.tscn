@@ -1,0 +1,89 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Environment/Scripts/Scene Holder.gd" type="Script" id=1]
+[ext_resource path="res://SaveState.gd" type="Script" id=2]
+[ext_resource path="res://Imports/Other/m3x6.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Fade_in"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+font_data = ExtResource( 3 )
+
+[node name="Scene Holder" type="Node2D" groups=["Perm", "Saved"]]
+script = ExtResource( 1 )
+
+[node name="Scene_fade" type="Node2D" parent="." groups=["Perm"]]
+
+[node name="Color_rect_Save_state" type="Node2D" parent="." groups=["Perm"]]
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="Color_rect_Save_state"]
+margin_left = -261.0
+margin_top = -228.0
+margin_right = 1310.0
+margin_bottom = 879.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Color_rect_Save_state"]
+anims/Fade_in = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 332.0
+margin_top = 234.0
+margin_right = 711.0
+margin_bottom = 337.0
+custom_fonts/font = SubResource( 3 )
+text = "Press any key to start.
+"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="existing_data" from="Color_rect_Save_state" to="." method="_on_existing_data"]
